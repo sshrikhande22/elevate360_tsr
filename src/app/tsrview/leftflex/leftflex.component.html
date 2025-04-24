@@ -1,0 +1,59 @@
+<div class="left">
+    <!-- Middle Score Tab -->
+    <div class="score-tab">
+    <div class="score-header">
+        <span>Gain more points today:  </span>
+        <strong>Turbo Quiz</strong>
+    </div>
+    <div class="score-body">
+        <span class="points">30
+            <img src="coin.png" style="width: 50px; height: 50px; border-radius: 10px;">
+        </span>
+                    
+        <button class="go-btn">Go</button>
+    </div>
+    </div>
+
+    <!-- My Performance -->
+    <div class="performance-box">
+    <h3>My Performance</h3>
+    <div *ngFor="let item of performance" class="metric">
+        <div class="metric-title">
+        {{ item.name }}
+            <span class="stars">
+            <ng-container *ngFor="let star of getStarsFromValue(item.progress)">
+                <img src="star_perform.jpg" style="width: 16px; height: 16px;" />
+
+            </ng-container>
+            </span>
+        </div>
+        
+        <div class="metric-score">
+        <span>{{ item.value }} / {{ item.target }}</span>
+        </div>
+        <div class="progress-bar">
+        <div class="fill" [ngClass]="getBarColor(item.progress)"[style.width.%]="item.progress"></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- My Missions -->
+    <div class="missions-box">
+    <h3>My Missions</h3>
+    <div *ngFor="let mission of missions" class="mission">
+        <div class="mission-left">
+        <div class="bar-container">
+            <div class="bar-fill" [style.width.%]="mission.progress"></div>
+        </div>
+        <span>{{ mission.progress }}%</span>
+        </div>
+        <div class="mission-right">
+        <strong>{{ mission.name }}</strong>
+        </div>
+        <div class="open-missions">
+        <small>{{ mission.openMissions }} open missions</small>
+        </div>
+    </div>
+    </div>
+</div>
+
